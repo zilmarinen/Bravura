@@ -48,7 +48,7 @@ Run all commands from the repository root (the folder containing `Package.swift`
 - Build: `swift build`
 - Test everything: `swift test` (note: tests require Swift Testing framework)
 
-Never edit or delete anything in `.build/` or `.git`, `.gitignore` or `.swiftformat`.
+Never edit or delete anything in `.build/`, `.git`, `.gitignore` or `.swiftformat`.
 
 ## Definition of done
 

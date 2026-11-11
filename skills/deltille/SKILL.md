@@ -22,7 +22,7 @@ Platforms: iOS 17+, macOS 15+ (see `Package.swift`).
 
 Deltille provides a mathematically rigorous grid coordinate system for non-rectangular lattices. Designed using an implementation-agnostic approach, Deltille can be used within SpriteKit, SceneKit or other general purpose 2D/3D rendering frameworks to define hierarchical data types, geometric structures and more. 
 
-You might use Deltille to generate 2D/3D procedural geometry constrained to a grid. For example, you could create a collection of neighbouring tile similar to a Pentomino that define the footprint for a shape or mesh by winding the unique outer vertices of each tile. Similarly, a single tile can be subdivided into smaller tiles (see `Stencil` and `Sieve`) to create tesselating patterns.
+You might use Deltille to generate 2D/3D procedural geometry constrained to a grid. For example, you could create a collection of neighbouring tiles similar to a Pentomino that define the footprint for a shape or mesh by winding the unique outer vertices of each tile. Similarly, a single tile can be subdivided into smaller tiles (see `Stencil` and `Sieve`) to create tesselating patterns.
 
 Another use case would be to define a hierarchical structure for grouping smaller tiles into a larger collection of chunks and regions to facilitate optimized grid chunk loading and caching at runtime. Given a 2D vector in world space, the appropriate tile, chunk or region can be found by converting to grid space for any given lattice size.
 
@@ -42,7 +42,7 @@ Run all commands from the repository root (the folder containing `Package.swift`
 - Test everything: `swift test`
 - Lint: `swiftformat --lint`
 
-Never edit or delete anything in `.build/` or `.git`, `.gitignore` or `.swiftformat`.
+Never edit or delete anything in `.build/`, `.git`, `.gitignore` or `.swiftformat`.
 
 ## Definition of done
 
@@ -135,7 +135,7 @@ Both hexagonal and triangular grids assert that the origin [0, 0, 0] defines the
 
 ## Grid Coordinates
 
-- Use integer cube-like coordinates x, y, z where x + y + z = 0 for hexagonal centres
+- Use integer cube-like coordinates x, y, z where x + y + z = 0
 - For triangular lattices, use barycentric coordinates with different invariants:
   - Triangle centres: x + y + z == 0
   - Triangle corners: x + y + z == 1
@@ -228,7 +228,9 @@ func rotate(_ rotation: Rotation) -> Self {
 - Clockwise 1 turn = 120° clockwise
 - Counter-clockwise 1 turn = 240° clockwise (2 turns)
 
-# Hexagon Footprint Rotation
+## Footprint Implementation
+
+### Hexagon Footprint Rotation
 
 Footprints rotate tiles around the footprint origin (not world origin):
 1. Convert each tile to offset from origin
@@ -245,7 +247,7 @@ public func rotate(_ rotation: Rotation) -> Self {
 }
 ```
 
-# Triangle Footprint Rotation
+### Triangle Footprint Rotation
 
 Footprints rotate tiles around the footprint origin (not world origin) with a special handling for triangles with a pointy orientation:
 1. Convert each tile to offset from origin
